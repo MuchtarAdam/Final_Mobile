@@ -91,7 +91,7 @@ public class MoviesModel implements Parcelable {
     }
 
     @Override
-    public String toString() {
+    public String   toString() {
         return "MoviesModel{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
