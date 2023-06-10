@@ -25,7 +25,7 @@ public class MovieRepository {
         MovieApiClient = MovieApiClient.getInstance();
     }
 
-    public LiveData<List<MoviesModel>> getPopularMovie() {
+    public LiveData<List<MoviesModel>> getMovie() {
         return MovieApiClient.getMovie();
     }
 
@@ -34,8 +34,7 @@ public class MovieRepository {
         MovieApiClient.getMovie(page);
     }
 
-    // next page
-    public void MovieNextPage() {
+    public void movieNextPage() {
         getMovie(page+1);
     }
 }
