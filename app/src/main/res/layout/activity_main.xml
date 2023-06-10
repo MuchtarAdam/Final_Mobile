@@ -7,29 +7,10 @@
     tools:context=".activity.MainActivity"
     android:background="@color/grey">
 
-    <RelativeLayout
-        android:id="@+id/rl_topBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:padding="@dimen/_10sdp">
-        <TextView
-            android:id="@+id/tv_titleView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="@dimen/_18ssp"
-            android:layout_marginStart="@dimen/_8sdp"/>
-    </RelativeLayout>
-
     <FrameLayout
         android:id="@+id/fl_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:elevation="1dp"
-        android:layout_below="@id/rl_topBar"/>
+        android:layout_height="match_parent"/>
 
     <View
         android:layout_width="match_parent"

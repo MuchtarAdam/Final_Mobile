@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.MovieFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/rl_topBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Movies" />
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:padding="@dimen/_10sdp">
+        <TextView
+            android:id="@+id/tv_titleView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="@dimen/_18ssp"
+            android:layout_marginStart="@dimen/_8sdp"/>
+    </RelativeLayout>
 
-</FrameLayout>
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/gird_item"
+        android:layout_below="@id/rl_topBar"/>
+
+</RelativeLayout>
