@@ -1,4 +1,4 @@
-package com.example.final_project;
+package com.example.final_project.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.widget.LinearLayout;
 
+import com.example.final_project.R;
 import com.example.final_project.fragment.FavoriteFragment;
 import com.example.final_project.fragment.MovieFragment;
 import com.example.final_project.fragment.TvShowFragment;
