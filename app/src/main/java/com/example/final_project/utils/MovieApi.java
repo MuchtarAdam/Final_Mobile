@@ -17,10 +17,9 @@ public interface MovieApi {
             @Query("query") String query,
             @Query("page") int page
     );
-        @GET("3/movie{movie_id}?")
-        Call<MovieModel> getMovie(
-          @Path("move_id") int movie_id,
-          @Query("api_key") String api_key
-        );
-
+    @GET("3/movie/{movie_id}?")
+    Call<MovieModel> getMovie(
+            @Path("move_id") int movie_id,
+            @Query("api_key") String api_key
+    );
 }

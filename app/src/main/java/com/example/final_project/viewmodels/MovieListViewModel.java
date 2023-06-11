@@ -1,21 +1,23 @@
 package com.example.final_project.viewmodels;
 
-import android.graphics.Movie;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.final_project.models.MovieModel;
+import com.example.final_project.repositories.MoviesRepository;
 
 import java.util.List;
 
-public class MovieListViewModel {
+public class MovieListViewModel extends ViewModel {
 
-    private MutableLiveData<List<MovieModel>> mMovies = new MutableLiveData<>();
+    private MoviesRepository moviesRepository;
 
-    public  MovieListViewModel(){}
-
+    public MovieListViewModel(){
+        moviesRepository = MoviesRepository.getInstance();
+    }
     public LiveData<List<MovieModel>> getMovies(){
-        return mMovies;
+        return moviesRepository.getMovies();
     }
 }
