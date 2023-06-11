@@ -30,10 +30,12 @@ public class MovieFragment extends Fragment implements OnMovieListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_movie, container, false);
 
+        recyclerView = rootView.findViewById(R.id.rv_main);
+
         movieListViewModel = new ViewModelProvider(this).get(MovieListViewModel.class);
         ObserveAnyChange();
         ConfigureRecyclerView();
-        movieListViewModel.searchMovieApi("fast", 1);
+        movieListViewModel.searchMovieApi("popular", 1);
 
         return rootView;
     }

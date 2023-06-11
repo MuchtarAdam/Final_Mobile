@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.final_project.R;
 import com.example.final_project.models.MovieModel;
+import com.example.final_project.utils.Credentials;
 
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
 
         Glide.with(holder.itemView.getContext()).
-                load(mMovies.get(position))
+                load(Credentials.POSTER_URL + mMovies.get(position))
                 .into(((MovieViewHolder)holder).iv_poster);
 
         ((MovieViewHolder)holder).tv_title.setText(mMovies.get(position).getTitle());
