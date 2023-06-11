@@ -18,6 +18,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     private List<MovieModel> mMovies;
     private OnMovieListener onMovieListener;
 
+    public MovieAdapter(OnMovieListener onMovieListener) {
+        this.onMovieListener = onMovieListener;
+    }
+
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -38,10 +42,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     @Override
     public int getItemCount() {
-        return mMovies.size();
+        if (mMovies != null) {
+            return mMovies.size();
+        }
+        return 0;
     }
 
     public List<MovieModel> getmMovies() {
         return mMovies;
+    }
+
+    public void setMovie(List<MovieModel> movieModels) {
+        this.mMovies = mMovies;
+        notifyDataSetChanged();
     }
 }
