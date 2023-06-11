@@ -5,12 +5,25 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.final_project.R;
 import com.example.final_project.models.MovieModel;
+import com.example.final_project.request.Servicey;
+import com.example.final_project.response.MovieSearchResponse;
+import com.example.final_project.utils.Credentials;
+import com.example.final_project.utils.MovieApi;
 import com.example.final_project.viewmodels.MovieListViewModel;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -24,6 +37,49 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         movieListViewModel = new ViewModelProvider(this).get(MovieListViewModel.class);
+
+        Button btn = findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GerRetrofitResponse();
+            }
+
+            private void GerRetrofitResponse() {
+                MovieApi movieApi = Servicey.getMovieApi();
+
+                Call<MovieSearchResponse> responseCall = movieApi
+                        .searchMovie(Credentials.KEY,
+                                "Jack Reacher",
+                                1);
+
+                responseCall.enqueue(new Callback<MovieSearchResponse>() {
+                    @Override
+                    public void onResponse(Call<MovieSearchResponse> call, Response<MovieSearchResponse> response) {
+                        if (response .code() == 200) {
+                            Log.v("Tag", "The response" + response.body().toString());
+
+                            List<MovieModel> movies = new ArrayList<>(response.body().getMovies());
+
+                            for (MovieModel movie : movies){
+                                Log.v("Tag", "The release date" + movie.getRelease_date());
+                            }
+                        }else {
+                            try {
+                                Log.v("Tag", "Error" + response.errorBody().string());
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<MovieSearchResponse> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
 
 //        btn_movie = findViewById(R.id.btn_movies);
 //        btn_tvShow = findViewById(R.id.btn_tvShows);
