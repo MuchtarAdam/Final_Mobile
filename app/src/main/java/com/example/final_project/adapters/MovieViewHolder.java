@@ -14,10 +14,11 @@ import com.example.final_project.R;
 public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     CardView cv_container;
-
     ImageView iv_poster;
     TextView tv_title, tv_release_date;
-    public MovieViewHolder(@NonNull View itemView) {
+
+    OnMovieListener onMovieListener;
+    public MovieViewHolder(@NonNull View itemView, OnMovieListener onMovieListener) {
         super(itemView);
 
         cv_container = itemView.findViewById(R.id.cv_container);
@@ -27,10 +28,12 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
         tv_title = itemView.findViewById(R.id.tv_title);
         tv_release_date = itemView.findViewById(R.id.tv_year);
 
+        itemView.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View view) {
-
+        onMovieListener.onMovieClick(getAdapterPosition());
     }
 }
