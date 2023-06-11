@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-confiq>
+    <domain-config cleartextTrafficPermitted = "true">
+        <domain includeSubdomains = "true"> api.themoviedb.org</domain>
+    </domain-config>>
+</network-security-confiq>
